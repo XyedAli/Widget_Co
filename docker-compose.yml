@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"  # Exposes Apache to your localhost on port 8080
+    volumes:
+      - .:/var/www/html  # Maps the local directory to /var/www/html in the container
+    networks:
+      - mynetwork
+    working_dir: /var/www/html  # Sets the working directory in the container
+
+networks:
+  mynetwork:
+    driver: bridge  # Use a bridge network to allow multiple containers to communicate
